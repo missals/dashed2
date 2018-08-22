@@ -13,4 +13,6 @@ urlpatterns = [
     path('typography/', TemplateView.as_view(template_name='dashboard/typography.html'), name='typography'),
     path('upgrade/', TemplateView.as_view(template_name='dashboard/upgrade.html'), name='upgrade'),
     path('user/', TemplateView.as_view(template_name='dashboard/user.html'), name='user'),
+    path('weather/', TemplateView.as_view(template_name='dashboard/weather.html', extra_context={
+        'pagetitle': 'Weather Forecast: Lauttasaari, Helsinki'}), name='weather'),
 ]
