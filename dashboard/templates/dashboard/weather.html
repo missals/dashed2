@@ -3,11 +3,111 @@
 {% block content %}
 
     {% load static %}
+    {% load tz %}
+    {% load custom_tags %}
 
-    <div class="content">
-        <div class="container-fluid">
-            Weather!
+    {% localtime on %}
+
+        <div class="content">
+            <div class="container-fluid">
+
+                <div class="row justify-content-center main-content">
+
+                    <table class="meteogram">
+                        <colgroup>
+                            {% for fmi in fmi_short_term %}
+                                <col class="{% if fmi.event_hour.hour == 21 %}first-hour-col{% endif %}">
+                            {% endfor %}
+
+                        </colgroup>
+                        <thead>
+                        <tr class="meteogram-dates">
+                            {% for fmi in fmi_short_term %}
+                                <td class="{% if fmi.event_hour|date:"d"|divisibleby:"2" %}even-day{% else %}odd-day{% endif %}">
+                                    {% if fmi.event_hour.hour == 21 %}
+                                        <div><span title="23. elokuuta 2018">{{ fmi.event_hour|date:"D" }}</span></div>
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                            </td>
+                        </tr>
+                        <tr class="meteogram-times">
+                            {% for fmi in fmi_short_term %}
+                                <td class="{% if fmi.event_hour|date:"d"|divisibleby:"2" %}even-day{% else %}odd-day{% endif %}">
+                                    <div><span title="23.8.2018 0:00">{{ fmi.event_hour|date:"H" }}</span></div>
+                                </td>
+                            {% endfor %}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="meteogram-weather-symbols">
+                            {% for fmi in fmi_short_term %}
+                                <td>
+                                    {% if fmi.event_hour.hour < 17 and fmi.event_hour.hour >= 3 %}
+                                        <img height="40px" width="40px"
+                                             src="{% get_static_prefix %}img/fmi-icons/{{ fmi.weather_symbol_3 }}.svg">
+                                    {% else %}
+                                        <img height="40px" width="40px"
+                                             src="{% get_static_prefix %}img/fmi-icons/{{ fmi.weather_symbol_3|add:100 }}.svg">
+
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        </tr>
+                        <tr class="meteogram-temperatures">
+                            {% for fmi in fmi_short_term %}
+                                <td>
+                                    <div class="temperature positive"
+                                         title="lämpötila {{ fmi.temperature|floatformat:"0" }}&nbsp;°C">{{ fmi.temperature|floatformat:"0" }}°
+                                    </div>
+                                </td>
+                            {% endfor %}
+                        </tr>
+                        <tr class="meteogram-wind-symbols">
+                            {% for fmi in fmi_short_term %}
+                                <td>
+                                    <div class="wind-speed-value" data-rotate="{{ fmi.wind_direction|add:180 }}"
+                                         style="background-image: url('{% get_static_prefix %}img/fmi-icons/S.svg'); background-size: 40px 40px; height: 40px; width:40px; line-height: 40px; font-size: 12px; font-weight: bold;">
+                                        {{ fmi.wind_speed_ms|floatformat:"0" }}
+                                    </div>
+                                </td>
+                            {% endfor %}
+                        </tr>
+                        <!--
+                        <tr class="meteogram-probabilities-of-precipitation">
+
+                            <td>
+                                <div class="probability-of-precipitation lt-30"
+                                     title="edeltävän tunnin sateen todennäköisyys < 10&nbsp;%"><span
+                                        class="probability-of-precipitation-value">&lt; 10&nbsp;%</span></div>
+                            </td>
+
+                        </tr>
+                        -->
+                        <tr class="meteogram-hourly-precipitation-bars">
+                            {% for fmi in fmi_short_term %}
+                                <td>
+                                    <div class="bar" style="height: {{ fmi.precipitation_1h|multiply:10 }}px;"></div>
+                                </td>
+                            {% endfor %}
+                        </tr>
+                        <tr class="meteogram-hourly-precipitation-values">
+                            {% for fmi in fmi_short_term %}
+                                <td>
+                            <span class="precipitation-amount">
+                                {{ fmi.precipitation_1h|floatformat:"1" }}<span class="unit">mm</span>
+                            </span>
+                                </td>
+                            {% endfor %}
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
         </div>
-    </div>
+
+    {% endlocaltime %}
 
 {% endblock %}

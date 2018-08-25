@@ -18,6 +18,9 @@
     <!-- Material Dashboard CSS -->
     <link rel="stylesheet" href="{% static 'css/material-dashboard.css' %}">
 
+    <!-- Dashed CSS -->
+    <link rel="stylesheet" href="{% static 'css/dashed.css' %}">
+
 </head>
 <body>
 
@@ -106,7 +109,7 @@
             <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="#pablo">{{ pagetitle }}</a>
+                        <a class="navbar-brand" href="#pablo">{{ page_title }}</a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -233,5 +236,9 @@
 
 <!-- Material Dashboard Core initialisations of plugins and Bootstrap Material Design Library -->
 <script src="{% static 'js/material-dashboard.js' %}"></script>
+
+<!-- Dashed CSS -->
+<script src="{% static 'js/dashed.js' %}"></script>
+
 </body>
 </html>

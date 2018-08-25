@@ -1,3 +1,30 @@
 from django.db import models
 
-# Create your models here.
+
+class FMIShortTerm(models.Model):
+
+    event_hour = models.DateTimeField()
+    geop_height = models.DecimalField(max_digits=15, decimal_places=2)
+    temperature = models.DecimalField(max_digits=15, decimal_places=2)
+    pressure = models.DecimalField(max_digits=15, decimal_places=2)
+    humidity = models.DecimalField(max_digits=15, decimal_places=2)
+    wind_direction = models.DecimalField(max_digits=15, decimal_places=2)
+    wind_speed_ms = models.DecimalField(max_digits=15, decimal_places=2)
+    wind_ums = models.DecimalField(max_digits=15, decimal_places=2)
+    wind_vms = models.DecimalField(max_digits=15, decimal_places=2)
+    maximum_wind = models.DecimalField(max_digits=15, decimal_places=2)
+    wind_gust = models.DecimalField(max_digits=15, decimal_places=2)
+    dew_point = models.DecimalField(max_digits=15, decimal_places=2)
+    total_cloud_cover = models.DecimalField(max_digits=15, decimal_places=2)
+    weather_symbol_3 = models.IntegerField()
+    low_cloud_cover = models.DecimalField(max_digits=15, decimal_places=2)
+    medium_cloud_cover = models.DecimalField(max_digits=15, decimal_places=2)
+    high_cloud_cover = models.DecimalField(max_digits=15, decimal_places=2)
+    precipitation_1h = models.DecimalField(max_digits=15, decimal_places=2)
+    precipitation_amount = models.DecimalField(max_digits=15, decimal_places=2)
+    radiation_global_accumulation = models.DecimalField(max_digits=15, decimal_places=2)
+    radiation_lw_accumulation = models.DecimalField(max_digits=15, decimal_places=2)
+    radiation_net_surface_lw_accumulation = models.DecimalField(max_digits=15, decimal_places=2)
+    radiation_net_surface_sw_accumulation = models.DecimalField(max_digits=15, decimal_places=2)
+    radiation_diffuse_accumulation = models.DecimalField(max_digits=15, decimal_places=2)
+    land_sea_mask = models.DecimalField(max_digits=15, decimal_places=2)

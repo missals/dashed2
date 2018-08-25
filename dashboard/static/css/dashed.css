@@ -1,0 +1,79 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+.main-panel > .content {
+    margin-top: 40px;
+}
+
+div.main-content {
+    padding-top: 40px;
+}
+
+.meteogram td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.meteogram-dates {
+    font-weight: bold;
+    font-size: 12px;
+    vertical-align: middle;
+    color: #333;
+    padding: 8px 0 3px 13px;
+}
+
+.meteogram-times {
+    vertical-align: middle;
+    font-weight: bold;
+    text-align: center;
+    font-size: 12px;
+    padding: 4px 0;
+}
+
+.meteogram-dates > td.odd-day, .meteogram-times > td.odd-day {
+    background-color: #d7d7d7;
+}
+
+.meteogram-dates > td.even-day, .meteogram-times > td.even-day {
+    background-color: #cdcdcd;
+}
+
+.first-hour-col {
+    border-left: 1px solid #acacac;
+}
+
+.temperature {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 1px 0 0 0;
+    color: blue;
+}
+
+.positive {
+    color: red;
+}
+
+.meteogram-hourly-precipitation-bars > td > .bar {
+    background-color: #95c3e9;
+}
+
+.meteogram-hourly-precipitation-bars > td > div {
+    width: 20px;
+    margin: 5px auto 0 auto;
+}
+
+.meteogram-hourly-precipitation-values > td > .precipitation-amount {
+    display: block;
+    padding: 3px 0 6px 0;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.meteogram-hourly-precipitation-values > td > .precipitation-amount > .unit {
+    padding-top: 0px;
+    display: block;
+    font-weight: normal;
+}
